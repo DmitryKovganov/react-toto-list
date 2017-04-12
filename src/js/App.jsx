@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Components/Header';
+import List from './Components/List';
 
 class App extends React.Component {
     constructor(props) {
@@ -60,9 +61,16 @@ class App extends React.Component {
 
 
     render() {
+        const todos = this.state.todos;
         return (
             <main>
-                <Header todos={this.state.todos} />
+                <Header todos={todos} />
+                <List
+                    todos={todos}
+                    onEdit={this.handleEdit}
+                    onDelete={this.handleDelete}
+                    onToggle={this.handleToggle}
+                />
             </main>
         );
     }
