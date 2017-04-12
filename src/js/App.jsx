@@ -36,16 +36,16 @@ class App extends React.Component {
     }
 
     handleDelete(id) {
-        let todos = this.state.todos;
-        const index = todos.findIndex(todo => todo.id === id);
-        const newTodos = todos.slice(0, index).concat(todos.slice(index + 1));
-        this.setState({ newTodos });
+        let prevTodos = this.state.todos;
+        const index = prevTodos.findIndex(todo => todo.id === id);
+        const todos = prevTodos.slice(0, index).concat(prevTodos.slice(index + 1));
+        this.setState({ todos });
     }
 
     handleToggle(id) {
         const todos = this.state.todos.map(todo => {
             if (todo.id !== id) return todo;
-            return {}.assign({}, todo, { completed: !todo.completed });
+            return Object.assign({}, todo, { completed: !todo.completed });
         });
 
         this.setState({ todos });
@@ -54,7 +54,7 @@ class App extends React.Component {
     handleEdit(id, title) {
         const todos = this.state.todos.map(todo => {
             if (todo.id !== id) return todo;
-            return {}.assign({}, todo, { title: title });
+            return Object.assign({}, todo, { title: title });
         });
 
         this.setState({ todos });
