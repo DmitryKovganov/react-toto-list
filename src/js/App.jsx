@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Components/Header';
 import List from './Components/List';
+import Form from './Components/Form';
 
 class App extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class App extends React.Component {
 
     handleAdd(title) {
         const todo = {
-            id: nextId(),
+            id: this.nextId(),
             title: title,
             completed: false
         };
@@ -71,6 +72,7 @@ class App extends React.Component {
                     onDelete={this.handleDelete}
                     onToggle={this.handleToggle}
                 />
+                <Form onAdd={this.handleAdd} />
             </main>
         );
     }
