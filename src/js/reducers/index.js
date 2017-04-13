@@ -14,12 +14,12 @@ function todoReducer(state = {}, action) {
             return true;
 
         case EDIT_TODO:
-            if (state.id !== action.id) return todo;
+            if (state.id !== action.id) return state;
             return Object.assign({}, state, {title: action.title});
 
         case TOGGLE_TODO:
-            if (state.id !== action.id) return todo;
-            return Object.assign({}, state, {completed: !action.completed});
+            if (state.id !== action.id) return state;
+            return Object.assign({}, state, {completed: !state.completed});
     }
 }
 
@@ -29,13 +29,13 @@ function reducer(state = [], action) {
             return [...state, todoReducer(undefined, action)];
 
         case DELETE_TODO:
-            return state.todos.filter(todo => todoReducer(todo, action));
+            return state.filter(todo => todoReducer(todo, action));
 
         case EDIT_TODO:
-            return state.todos.map(todo => todoReducer(todo, action));
+            return state.map(todo => todoReducer(todo, action));
 
         case TOGGLE_TODO:
-            return state.todos.map(todo => todoReducer(todo, action));
+            return state.map(todo => todoReducer(todo, action));
         default:
             return state;
     }
