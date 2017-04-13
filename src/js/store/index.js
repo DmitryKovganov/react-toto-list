@@ -4,4 +4,4 @@ import state from './state';
 
 const store = createStore(reducer, state);
 
-export default state;
+export default store;

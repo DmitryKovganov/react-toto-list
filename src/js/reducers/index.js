@@ -1,4 +1,4 @@
-import {ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO} from '../actions';
+import {ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO} from '../constants/todo';
 
 function todoReducer(state = {}, action) {
     switch (action.type) {
